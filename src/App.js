@@ -1,9 +1,10 @@
+import { Container } from 'react-bootstrap';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
+import './bootstrap.min.css';
 import Footer from './components/Footer';
 import Header from './components/Header';
-import './bootstrap.min.css';
-import { Container } from 'react-bootstrap';
+import CartScreen from './screens/CartScreen';
 import HomeScreen from './screens/HomeScreen';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
 import ProductScreen from './screens/ProductScreen';
 
 function App() {
@@ -14,6 +15,7 @@ function App() {
         <Container>
           <Route exact path="/" component={HomeScreen} />
           <Route path="/product/:id" component={ProductScreen} />
+          <Route path="/cart/:id?" component={CartScreen} />
         </Container>
       </main>
       <Footer />
