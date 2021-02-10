@@ -91,9 +91,13 @@ const OrderScreen = ({ match }) => {
                   Your order has been delivered on{' '}
                   {moment(order.deliveredAt).format('MMMM Do, YYYY')}
                 </Message>
-              ) : (
+              ) : order.isPaid ? (
                 <Message variant="warning">
                   Your order is being prepared for shipment
+                </Message>
+              ) : (
+                <Message variant="danger">
+                  We're waiting for payment to process the delivery
                 </Message>
               )}
             </ListGroup.Item>
