@@ -2,7 +2,11 @@ import React, { useEffect, useState } from 'react';
 import { Card, Col, Image, ListGroup, Row } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { getOrderDetails, payOrder } from '../actions/orderActions';
+import {
+  getOrderDetails,
+  listMyOrders,
+  payOrder,
+} from '../actions/orderActions';
 import Loader from '../components/Loader';
 import Message from '../components/Message';
 import moment from 'moment';
@@ -46,6 +50,7 @@ const OrderScreen = ({ match }) => {
     if (!order || successPay || order._id !== Number(orderId)) {
       dispatch({ type: ORDER_PAY_RESET });
       dispatch(getOrderDetails(orderId));
+      dispatch(listMyOrders());
     } else if (!order.isPaid) {
       if (!window.paypal) {
         addPayPalScript();
